@@ -13,7 +13,7 @@ namespace Accounting.DataLayer.Repositories
         bool Insert(Customers customer);
         bool Update(Customers customer);
         bool DeleteCustomer(Customers custmer);
-        bool DeleteCustomers(int customerId);
+        bool DeleteCustomer(int customerId);
         void Save();
     }
 }

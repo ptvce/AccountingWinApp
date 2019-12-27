@@ -1,6 +1,7 @@
 ﻿using Accounting.DataLayer.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,39 +10,73 @@ namespace Accounting.DataLayer.Services
 {
     public class CustomerRepository : ICustomerRepository
     {
+        Accounting_DBEntities db = new Accounting_DBEntities();
         public bool DeleteCustomer(Customers custmer)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Entry(custmer).State = EntityState.Deleted;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public bool DeleteCustomers(int customerId)
+        public bool DeleteCustomer(int customerId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var customer = GetCustomerById(customerId);
+                DeleteCustomer(customer);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public List<Customers> GetAllCustomers()
         {
-            throw new NotImplementedException();
+            return db.Customers.ToList();
         }
 
         public Customers GetCustomerById(int customerId)
         {
-            throw new NotImplementedException();
+            return db.Customers.Find(customerId);
         }
 
         public bool Insert(Customers customer)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Customers.Add(customer);
+                return true;
+            }
+            catch
+            {
+                return false;
+            } 
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            db.SaveChanges();
         }
 
         public bool Update(Customers customer)
         {
-            throw new NotImplementedException();
+            try
+            {
+                db.Entry(customer).State = EntityState.Modified;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
