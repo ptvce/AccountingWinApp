@@ -28,7 +28,7 @@ namespace ConsoleAppForTest
                 CustomerImage = "NoPhoto"
             };
             db.CustomerRepository.Insert(newCustomer);
-            db.CustomerRepository.Save();
+           // db.CustomerRepository.Save();
             db.Dispose();
             //Accounting_DBEntities db = new Accounting_DBEntities();
             //ICustomerRepository customer = new CustomerRepository();

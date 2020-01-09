@@ -47,6 +47,12 @@ namespace Accounting.DataLayer.Services
             return db.Customers.ToList();
         }
 
+        public IEnumerable<Customers> GetCustomerByFilter(string parameter)
+        {
+            //polimorfism : اینترفیس ها می توانند به تمام فرزندان خود تغییر قیافه دهند
+            return db.Customers.Where(c => c.FullName.Contains(parameter) || c.Email.Contains(parameter) || c.Mobile.Contains(parameter)).ToList();
+        }
+
         public Customers GetCustomerById(int customerId)
         {
             return db.Customers.Find(customerId);
@@ -65,10 +71,7 @@ namespace Accounting.DataLayer.Services
             } 
         }
 
-        public void Save()
-        {
-            db.SaveChanges();
-        }
+       
 
         public bool Update(Customers customer)
         {
