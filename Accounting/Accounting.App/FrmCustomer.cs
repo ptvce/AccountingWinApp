@@ -22,7 +22,11 @@ namespace Accounting.App
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            FrmAddOrEdit frmAddOrEdit = new FrmAddOrEdit();
+            if (frmAddOrEdit.ShowDialog() == DialogResult.OK)
+            {
+                BindGrid();
+            }
         }
 
         private void FrmCustomer_Load(object sender, EventArgs e)
