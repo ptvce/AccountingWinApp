@@ -77,6 +77,11 @@ namespace Accounting.DataLayer.Services
         {
             try
             {
+                //اگر موقع استفاده از یوزینگ استفاده نکنیم در زمان آپدیت به مشکل می خوردیم که با دی تچ کردن به روش زیر مشکل حل می شود
+                var local = db.Set<Customers>().Local.FirstOrDefault(f => f.CustomerID == customer.CustomerID);
+                if (local != null)
+                    db.Entry(local).State = EntityState.Detached;
+                //
                 db.Entry(customer).State = EntityState.Modified;
                 return true;
             }

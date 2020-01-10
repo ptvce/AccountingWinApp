@@ -199,7 +199,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmAddOrEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddOrEdit";
+            this.Text = "Add a person";
+            this.Load += new System.EventHandler(this.FrmAddOrEdit_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

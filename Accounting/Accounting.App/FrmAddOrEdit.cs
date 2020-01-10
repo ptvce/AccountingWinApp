@@ -16,6 +16,7 @@ namespace Accounting.App
 {
     public partial class FrmAddOrEdit : Form
     {
+        public int customerId = 0;
         UnitOfWork db = new UnitOfWork();
         public FrmAddOrEdit()
         {
@@ -44,13 +45,33 @@ namespace Accounting.App
                 {
                     Address = txtAddress.Text,
                     Email = txtEmail.Text,
-                    FullName = txtEmail.Name,
+                    FullName = txtName.Text,
                     Mobile = txtMobile.Text,
                     CustomerImage = imageName
                 };
-                db.CustomerRepository.Insert(customer);
+                if (customerId == 0)
+                    db.CustomerRepository.Insert(customer);
+                else
+                {
+                    customer.CustomerID = customerId;
+                    db.CustomerRepository.Update(customer);
+                }
                 db.Save();
                 DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void FrmAddOrEdit_Load(object sender, EventArgs e)
+        {
+            if (customerId != 0)
+            {
+                this.Text = "Edit a person";
+                var customer = db.CustomerRepository.GetCustomerById(customerId);
+                txtAddress.Text = customer.Address;
+                txtEmail.Text = customer.Email;
+                txtMobile.Text = customer.Mobile;
+                txtName.Text = customer.FullName;
+                pcCustomer.ImageLocation = Application.StartupPath + "/Images/" + customer.CustomerImage;
             }
         }
     }
