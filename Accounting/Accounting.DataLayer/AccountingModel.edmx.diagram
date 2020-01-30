@@ -5,7 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="c6806c15a988406ca73dfa77b26e1101" Name="Diagram1">
-        <EntityTypeShape EntityType="Accounting_DBModel.Customers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Accounting_DBModel.Customers" Width="1.5" PointX="1.875" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Accounting_DBModel.Accounting" Width="1.5" PointX="7.875" PointY="0.625" />
+        <EntityTypeShape EntityType="Accounting_DBModel.AccountingType" Width="1.5" PointX="3" PointY="0.5" />
+        <AssociationConnector Association="Accounting_DBModel.FK_Accounting_AccountingType" />
+        <AssociationConnector Association="Accounting_DBModel.FK_Accounting_Accounting1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

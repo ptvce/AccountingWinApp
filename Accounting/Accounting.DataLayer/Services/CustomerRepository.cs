@@ -1,4 +1,5 @@
 ﻿using Accounting.DataLayer.Repositories;
+using Accounting.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -56,6 +57,20 @@ namespace Accounting.DataLayer.Services
         public Customers GetCustomerById(int customerId)
         {
             return db.Customers.Find(customerId);
+        }
+
+        public List<ListCustomerViewModel> GetNameCustomers(string filter = "")
+        {
+            if (filter == "")
+                return db.Customers.Select(c => new ListCustomerViewModel() {
+                    CustomerID = c.CustomerID,
+                    FullName = c.FullName,
+                }).ToList();
+            return db.Customers.Where(c => c.FullName.Contains(filter)).Select(c => new ListCustomerViewModel()
+            {
+                CustomerID = c.CustomerID,
+                FullName = c.FullName,
+            }).ToList(); 
         }
 
         public bool Insert(Customers customer)
