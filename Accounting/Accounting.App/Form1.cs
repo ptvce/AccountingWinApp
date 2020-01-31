@@ -43,5 +43,31 @@ namespace Accounting.App
             frmReport.ShowDialog();
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmLogin frmLogin = new FrmLogin();
+            if (frmLogin.ShowDialog() == DialogResult.OK)
+            {
+                this.Show();
+                lblDate.Text = DateTime.Now.ToShortDateString();
+                lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+            }
+            else
+                Application.Exit();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void ChangePass_Click(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.IsEdit = true;
+            frmLogin.ShowDialog();
+        }
     }
 }
