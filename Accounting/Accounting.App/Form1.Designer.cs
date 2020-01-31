@@ -34,6 +34,8 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.btnCustomer = new System.Windows.Forms.ToolStripButton();
             this.btNewAccount = new System.Windows.Forms.ToolStripButton();
+            this.btnPaymentReport = new System.Windows.Forms.ToolStripButton();
+            this.btnReceiveReport = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +65,9 @@
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnCustomer,
-            this.btNewAccount});
+            this.btNewAccount,
+            this.btnPaymentReport,
+            this.btnReceiveReport});
             this.toolStrip2.Location = new System.Drawing.Point(0, 27);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(782, 67);
@@ -73,6 +77,8 @@
             // btnCustomer
             // 
             this.btnCustomer.Image = global::Accounting.App.Properties.Resources._1371476468_preferences_contact_list;
+            this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCustomer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnCustomer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(76, 64);
@@ -90,6 +96,28 @@
             this.btNewAccount.Text = "Account";
             this.btNewAccount.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btNewAccount.Click += new System.EventHandler(this.btNewAccount_Click);
+            // 
+            // btnPaymentReport
+            // 
+            this.btnPaymentReport.Image = global::Accounting.App.Properties.Resources.servicesCosts;
+            this.btnPaymentReport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnPaymentReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPaymentReport.Name = "btnPaymentReport";
+            this.btnPaymentReport.Size = new System.Drawing.Size(114, 64);
+            this.btnPaymentReport.Text = "PaymentReport";
+            this.btnPaymentReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnPaymentReport.Click += new System.EventHandler(this.btnPaymentReport_Click);
+            // 
+            // btnReceiveReport
+            // 
+            this.btnReceiveReport.Image = global::Accounting.App.Properties.Resources._1371476049_fork3;
+            this.btnReceiveReport.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnReceiveReport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnReceiveReport.Name = "btnReceiveReport";
+            this.btnReceiveReport.Size = new System.Drawing.Size(109, 64);
+            this.btnReceiveReport.Text = "ReceiveReport";
+            this.btnReceiveReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReceiveReport.Click += new System.EventHandler(this.btnReceiveReport_Click);
             // 
             // Form1
             // 
@@ -119,6 +147,8 @@
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton btnCustomer;
         private System.Windows.Forms.ToolStripButton btNewAccount;
+        private System.Windows.Forms.ToolStripButton btnPaymentReport;
+        private System.Windows.Forms.ToolStripButton btnReceiveReport;
     }
 }
 
