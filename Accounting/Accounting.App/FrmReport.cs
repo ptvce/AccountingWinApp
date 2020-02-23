@@ -115,5 +115,27 @@ namespace Accounting.App
                 
             }
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Customer");
+            dt.Columns.Add("Amount");
+            dt.Columns.Add("Date");
+            dt.Columns.Add("Description");
+
+            foreach (DataGridViewRow item in dgViewReport.Rows)
+            {
+                dt.Rows.Add(
+                    item.Cells[0].Value.ToString(),
+                    item.Cells[1].Value.ToString(),
+                    item.Cells[2].Value.ToString(),
+                    item.Cells[3].Value.ToString()
+                    );
+            }
+            stiPrint.Load(Application.StartupPath + "/Report.mrt");
+            stiPrint.RegData("DT", dt);
+            stiPrint.Show();
+        }
     }
 }

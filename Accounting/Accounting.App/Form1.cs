@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Accounting.Business;
+using Accounting.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,11 +55,22 @@ namespace Accounting.App
                 this.Show();
                 lblDate.Text = DateTime.Now.ToShortDateString();
                 lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
+
+                GetMonthReport();
             }
             else
                 Application.Exit();
         }
 
+        private void GetMonthReport()
+        {
+            ReportViewModel rp = Account.getReportForMonth();
+
+            lblPay.Text = rp.Pay.ToString("#,0");
+            lblReceive.Text = rp.Receive.ToString("#,0");
+            lblRemain.Text = rp.Remain.ToString("#,0");
+            
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
